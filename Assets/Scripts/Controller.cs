@@ -192,9 +192,9 @@ public class Controller : MonoBehaviour
         {
             tile = adyLadron[Random.Range(0, adyLadron.Count - 1)];
         }
-        while (tile.numTile == robber.GetComponent<RobberMove>().currentTile);
+        while (tile.numTile == clickedTile);
 
-        robber.GetComponent<RobberMove>().currentTile = tile.numTile;
+        clickedTile = tile.numTile;
         robber.GetComponent<RobberMove>().MoveToTile(tile);
     }
 
