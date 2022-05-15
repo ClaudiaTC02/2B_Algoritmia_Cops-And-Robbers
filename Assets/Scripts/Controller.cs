@@ -229,6 +229,7 @@ public class Controller : MonoBehaviour
 
         //La ponemos rosa porque acabamos de hacer un reset
         tiles[indexcurrentTile].current = true;
+        tiles[indexcurrentTile].visited = true;
 
         //Cola para el BFS
         Queue<Tile> nodes = new Queue<Tile>();
