@@ -177,7 +177,25 @@ public class Controller : MonoBehaviour
         - Movemos al caco a esa casilla
         - Actualizamos la variable currentTile del caco a la nueva casilla
         */
-        robber.GetComponent<RobberMove>().MoveToTile(tiles[robber.GetComponent<RobberMove>().currentTile]);
+        List<Tile> adyLadron = new List<Tile>();
+
+        foreach (Tile til in tiles)
+        {
+            if (til.selectable)
+            {
+                adyLadron.Add(til);
+            }
+        }
+        //Casillas
+        Tile tile;
+        do
+        {
+            tile = adyLadron[Random.Range(0, adyLadron.Count - 1)];
+        }
+        while (tile.numTile == robber.GetComponent<RobberMove>().currentTile);
+
+        robber.GetComponent<RobberMove>().currentTile = tile.numTile;
+        robber.GetComponent<RobberMove>().MoveToTile(tile);
     }
 
     public void EndGame(bool end)
