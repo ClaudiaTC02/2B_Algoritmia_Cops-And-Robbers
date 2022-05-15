@@ -16,6 +16,16 @@
 
 # Visual Studio cache directory
 .vs/
+.vsconfig/
+
+### VisualStudioCode ###
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
 # Gradle cache directory
 .gradle/
