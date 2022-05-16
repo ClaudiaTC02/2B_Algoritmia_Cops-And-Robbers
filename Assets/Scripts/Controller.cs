@@ -177,25 +177,16 @@ public class Controller : MonoBehaviour
         - Movemos al caco a esa casilla
         - Actualizamos la variable currentTile del caco a la nueva casilla
         */
-        List<Tile> adyLadron = new List<Tile>();
-
-        foreach (Tile til in tiles)
+        List<int> adyLadron = new List<int>();
+        for(int i=0; i < Constants.NumTiles; i++)
         {
-            if (til.selectable)
-            {
-                adyLadron.Add(til);
-            }
+            if (tiles[i].selectable)
+                adyLadron.Add(i);
+                
         }
-        //Casillas
-        Tile tile;
-        do
-        {
-            tile = adyLadron[Random.Range(0, adyLadron.Count - 1)];
-        }
-        while (tile.numTile == clickedTile);
-
-        clickedTile = tile.numTile;
-        robber.GetComponent<RobberMove>().MoveToTile(tile);
+        int random =Random.Range(0, adyLadron.Count);
+        robber.GetComponent<RobberMove>().currentTile = adyLadron[random];
+        robber.GetComponent<RobberMove>().MoveToTile(tiles[robber.GetComponent<RobberMove>().currentTile]);
     }
 
     public void EndGame(bool end)
